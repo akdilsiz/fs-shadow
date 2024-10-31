@@ -20,6 +20,7 @@ func checkSingleEventResult(t *testing.T, name string, expect Event, result []Ev
 }
 
 func Test_SingleEvents(t *testing.T) {
+	_ = os.RemoveAll("/tmp/fs-shadow")
 	handler := newEventHandler()
 	testFolder := "/tmp/fs-shadow"
 
@@ -118,6 +119,7 @@ func Test_SingleEvents(t *testing.T) {
 }
 
 func Test_EventQueue(t *testing.T) {
+	_ = os.RemoveAll("/tmp/fs-shadow")
 	handler := newEventHandler()
 	testFolder := "/tmp/fs-shadow"
 	folder := connector.NewFSPath(filepath.Join(testFolder, "test"))

@@ -14,6 +14,7 @@ import (
 )
 
 func Test_WindowsWatcherUseCase(t *testing.T) {
+	_ = os.RemoveAll("fs-shadow-test")
 	testRoot := "fs-shadow-test"
 	_ = os.Mkdir(testRoot, os.ModePerm)
 	tw, _, err := NewPathWatcher(testRoot)
@@ -47,6 +48,7 @@ func Test_WindowsWatcherUseCase(t *testing.T) {
 }
 
 func Test_WindowsWatcherFunctionality(t *testing.T) {
+	_ = os.RemoveAll("fs-shadow-test")
 	var err error
 	var watcher *fsnotify.Watcher
 	var oldSum string

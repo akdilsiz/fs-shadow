@@ -13,6 +13,7 @@ import (
 )
 
 func Test_LinuxWatcherUseCase(t *testing.T) {
+	_ = os.RemoveAll("/tmp/fs-shadow")
 	testRoot := "/tmp/fs-shadow"
 	_ = os.Mkdir(testRoot, os.ModePerm)
 	tw, _, err := NewPathWatcher(testRoot)
@@ -45,6 +46,7 @@ func Test_LinuxWatcherUseCase(t *testing.T) {
 }
 
 func Test_LinuxWatcherFunctionality(t *testing.T) {
+	_ = os.RemoveAll("/tmp/fs-shadow")
 	var err error
 	var watcher *fsnotify.Watcher
 	parentPath := "/tmp"

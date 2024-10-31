@@ -5,6 +5,7 @@ import (
 	connector "github.com/ayhanozemre/fs-shadow/path"
 	"github.com/fsnotify/fsnotify"
 	log "github.com/sirupsen/logrus"
+	"os"
 	"path/filepath"
 	"testing"
 )
@@ -22,6 +23,7 @@ func checkSingleEventResult(t *testing.T, name string, expect Event, result []Ev
 func Test_SingleEvents(t *testing.T) {
 	log.SetLevel(log.DebugLevel)
 
+	_ = os.RemoveAll("fs-shadow-test")
 	handler := newEventHandler()
 	testFolder := "fs-shadow-test"
 
@@ -117,7 +119,7 @@ func Test_SingleEvents(t *testing.T) {
 
 func Test_EventQueue(t *testing.T) {
 	log.SetLevel(log.DebugLevel)
-
+	_ = os.RemoveAll("fs-shadow-test")
 	handler := newEventHandler()
 	testFolder := "fs-shadow-test"
 	folder := connector.NewFSPath(filepath.Join(testFolder, "test"))
